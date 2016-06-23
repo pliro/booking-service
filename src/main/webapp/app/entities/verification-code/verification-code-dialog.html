@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myVerificationCodeLabel">Create or edit a Verification Code</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.verificationCode.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.verificationCode.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_verificationCodeId">Verification Code Id</label>
+            <input type="text" class="form-control" name="verificationCodeId" id="field_verificationCodeId"
+                    ng-model="vm.verificationCode.verificationCodeId"
+                    required />
+            <div ng-show="editForm.verificationCodeId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.verificationCodeId.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_system">System</label>
+            <select class="form-control" name="system" ng-model="vm.verificationCode.system" id="field_system" required>
+                <option value="PHONE">PHONE</option>
+                <option value="FAX">FAX</option>
+                <option value="EMAIL">EMAIL</option>
+                <option value="PAGER">PAGER</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+            <div ng-show="editForm.system.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.system.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                    ng-model="vm.verificationCode.value"
+                    required />
+            <div ng-show="editForm.value.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.value.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="vm.verificationCode.code"
+                    required />
+            <div ng-show="editForm.code.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.code.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_verifiedAt">Verified At</label>
+                <div class="input-group">
+                    <input id="field_verifiedAt" type="text" class="form-control" name="verifiedAt" datetime-picker="{{dateformat}}" ng-model="vm.verificationCode.verifiedAt" is-open="vm.datePickerOpenStatus.verifiedAt"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('verifiedAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,80 @@
+<div>
+    <h2>Bookings</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="booking.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Booking
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bookingId"><span>Booking Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expiresAt"><span>Expires At</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span>State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="slotId"><span>Slot Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bookedFrom"><span>Booked From</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bookedTo"><span>Booked To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="resourceId"><span>Resource Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="appointmentId"><span>Appointment Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="active"><span>Active</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notes"><span>Notes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="personId"><span>Person Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="verificationCodeId"><span>Verification Code Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentId"><span>Payment Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="booking in vm.bookings track by booking.id">
+                    <td><a ui-sref="booking-detail({id:booking.id})">{{booking.id}}</a></td>
+                    <td>{{booking.bookingId}}</td>
+                    <td>{{booking.expiresAt | date:'medium'}}</td>
+                    <td translate="{{'pliroApp.BookingState.' + booking.state}}">{{booking.state}}</td>
+                    <td>{{booking.slotId}}</td>
+                    <td>{{booking.bookedFrom | date:'medium'}}</td>
+                    <td>{{booking.bookedTo | date:'medium'}}</td>
+                    <td>{{booking.resourceId}}</td>
+                    <td>{{booking.appointmentId}}</td>
+                    <td>{{booking.active}}</td>
+                    <td>{{booking.notes}}</td>
+                    <td>{{booking.personId}}</td>
+                    <td>{{booking.verificationCodeId}}</td>
+                    <td>{{booking.paymentId}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="booking-detail({id:booking.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="booking.edit({id:booking.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="booking.delete({id:booking.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

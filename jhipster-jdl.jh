@@ -1,0 +1,63 @@
+enum BookingState {
+	AWAITING_VERIFICATION,
+    VERIFICATION_EXPIRED,
+    AWAITING_PAYMENT,
+    AWAITING_CONFIRMATION,
+    CONFIRMED,
+    DECLINED,
+    CANCELLED,
+    DELETED
+}
+
+entity Booking {
+	bookingId String required,
+	expiresAt ZonedDateTime required,
+    state BookingState required,
+    slotId String required,
+    bookedFrom ZonedDateTime required,
+    bookedTo ZonedDateTime required,    
+    resourceId String required,
+    appointmentId String,
+    active Boolean,
+    notes String,
+    personId String,
+    verificationCodeId String,
+    paymentId String,
+}
+
+entity Person {
+	personId String required,
+	fullName String,
+    phoneNumber String,
+    email String
+}
+
+enum ContactPointSystem {
+    PHONE, 
+    FAX, 
+    EMAIL, 
+    PAGER, 
+    OTHER
+}
+
+entity VerificationCode {
+	verificationCodeId String required,
+	system ContactPointSystem required,
+    value String required,
+	code String required,
+    verifiedAt ZonedDateTime,
+}
+
+entity Payment {
+	paymentId String required,
+    paidAt ZonedDateTime,
+    amount BigDecimal,
+}
+
+paginate Booking, Person, VerificationCode, Payment  with infinite-scroll
+
+dto Booking, Person, VerificationCode, Payment with mapstruct
+
+service Booking, Person, VerificationCode, Payment with serviceClass
+
+service Booking, Person, VerificationCode, Payment with serviceImpl

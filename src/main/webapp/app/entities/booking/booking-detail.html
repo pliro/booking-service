@@ -1,0 +1,66 @@
+
+<div>
+    <h2><span>Booking</span> {{vm.booking.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Booking Id</span></dt>
+        <dd>
+            <span>{{vm.booking.bookingId}}</span>
+        </dd>
+        <dt><span>Expires At</span></dt>
+        <dd>
+            <span>{{vm.booking.expiresAt | date:'medium'}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span translate="{{'pliroApp.BookingState.' + vm.booking.state}}">{{vm.booking.state}}</span>
+        </dd>
+        <dt><span>Slot Id</span></dt>
+        <dd>
+            <span>{{vm.booking.slotId}}</span>
+        </dd>
+        <dt><span>Booked From</span></dt>
+        <dd>
+            <span>{{vm.booking.bookedFrom | date:'medium'}}</span>
+        </dd>
+        <dt><span>Booked To</span></dt>
+        <dd>
+            <span>{{vm.booking.bookedTo | date:'medium'}}</span>
+        </dd>
+        <dt><span>Resource Id</span></dt>
+        <dd>
+            <span>{{vm.booking.resourceId}}</span>
+        </dd>
+        <dt><span>Appointment Id</span></dt>
+        <dd>
+            <span>{{vm.booking.appointmentId}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{vm.booking.active}}</span>
+        </dd>
+        <dt><span>Notes</span></dt>
+        <dd>
+            <span>{{vm.booking.notes}}</span>
+        </dd>
+        <dt><span>Person Id</span></dt>
+        <dd>
+            <span>{{vm.booking.personId}}</span>
+        </dd>
+        <dt><span>Verification Code Id</span></dt>
+        <dd>
+            <span>{{vm.booking.verificationCodeId}}</span>
+        </dd>
+        <dt><span>Payment Id</span></dt>
+        <dd>
+            <span>{{vm.booking.paymentId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

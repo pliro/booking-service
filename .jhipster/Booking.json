@@ -1,0 +1,96 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "bookingId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "expiresAt",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "state",
+      "fieldType": "BookingState",
+      "fieldValues": "AWAITING_VERIFICATION,VERIFICATION_EXPIRED,AWAITING_PAYMENT,AWAITING_CONFIRMATION,CONFIRMED,DECLINED,CANCELLED,DELETED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "slotId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "bookedFrom",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "bookedTo",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "resourceId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "appointmentId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "notes",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "personId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 12,
+      "fieldName": "verificationCodeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 13,
+      "fieldName": "paymentId",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160622214842",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl"
+}

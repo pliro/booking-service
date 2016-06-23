@@ -1,0 +1,177 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBookingLabel">Create or edit a Booking</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.booking.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.booking.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bookingId">Booking Id</label>
+            <input type="text" class="form-control" name="bookingId" id="field_bookingId"
+                    ng-model="vm.booking.bookingId"
+                    required />
+            <div ng-show="editForm.bookingId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bookingId.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_expiresAt">Expires At</label>
+                <div class="input-group">
+                    <input id="field_expiresAt" type="text" class="form-control" name="expiresAt" datetime-picker="{{dateformat}}" ng-model="vm.booking.expiresAt" is-open="vm.datePickerOpenStatus.expiresAt"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expiresAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.expiresAt.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.expiresAt.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.expiresAt.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_state">State</label>
+            <select class="form-control" name="state" ng-model="vm.booking.state" id="field_state" required>
+                <option value="AWAITING_VERIFICATION" translate="pliroApp.BookingState.AWAITING_VERIFICATION">AWAITING_VERIFICATION</option>
+                <option value="VERIFICATION_EXPIRED" translate="pliroApp.BookingState.VERIFICATION_EXPIRED">VERIFICATION_EXPIRED</option>
+                <option value="AWAITING_PAYMENT" translate="pliroApp.BookingState.AWAITING_PAYMENT">AWAITING_PAYMENT</option>
+                <option value="AWAITING_CONFIRMATION" translate="pliroApp.BookingState.AWAITING_CONFIRMATION">AWAITING_CONFIRMATION</option>
+                <option value="CONFIRMED">CONFIRMED</option>
+                <option value="DECLINED">DECLINED</option>
+                <option value="CANCELLED">CANCELLED</option>
+                <option value="DELETED">DELETED</option>
+            </select>
+            <div ng-show="editForm.state.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.state.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_slotId">Slot Id</label>
+            <input type="text" class="form-control" name="slotId" id="field_slotId"
+                    ng-model="vm.booking.slotId"
+                    required />
+            <div ng-show="editForm.slotId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.slotId.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bookedFrom">Booked From</label>
+                <div class="input-group">
+                    <input id="field_bookedFrom" type="text" class="form-control" name="bookedFrom" datetime-picker="{{dateformat}}" ng-model="vm.booking.bookedFrom" is-open="vm.datePickerOpenStatus.bookedFrom"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('bookedFrom')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.bookedFrom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bookedFrom.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bookedFrom.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bookedTo">Booked To</label>
+                <div class="input-group">
+                    <input id="field_bookedTo" type="text" class="form-control" name="bookedTo" datetime-picker="{{dateformat}}" ng-model="vm.booking.bookedTo" is-open="vm.datePickerOpenStatus.bookedTo"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('bookedTo')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.bookedTo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bookedTo.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bookedTo.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_resourceId">Resource Id</label>
+            <input type="text" class="form-control" name="resourceId" id="field_resourceId"
+                    ng-model="vm.booking.resourceId"
+                    required />
+            <div ng-show="editForm.resourceId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.resourceId.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_appointmentId">Appointment Id</label>
+            <input type="text" class="form-control" name="appointmentId" id="field_appointmentId"
+                    ng-model="vm.booking.appointmentId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="vm.booking.active"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="vm.booking.notes"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_personId">Person Id</label>
+            <input type="text" class="form-control" name="personId" id="field_personId"
+                    ng-model="vm.booking.personId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_verificationCodeId">Verification Code Id</label>
+            <input type="text" class="form-control" name="verificationCodeId" id="field_verificationCodeId"
+                    ng-model="vm.booking.verificationCodeId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentId">Payment Id</label>
+            <input type="text" class="form-control" name="paymentId" id="field_paymentId"
+                    ng-model="vm.booking.paymentId"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

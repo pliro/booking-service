@@ -1,0 +1,15 @@
+version: '2'
+services:
+    pliro-app:
+        image: pliro
+        external_links:
+            - pliro-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/pliro?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    pliro-mysql:
+        extends:
+            file: mysql.yml
+            service: pliro-mysql
